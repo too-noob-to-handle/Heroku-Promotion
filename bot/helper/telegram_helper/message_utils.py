@@ -116,9 +116,9 @@ def sendStatusMessage(msg, bot):
     progress, buttons = get_readable_message()
     if progress is None:
         progress, buttons = get_readable_message()
-    progress += f"<b>💻Cᴘᴜ :</b> <code>{psutil.cpu_percent()}%</code>" \
-           f" <b>📝Rᴀᴍ :</b> <code>{psutil.virtual_memory().percent}%</code>" \
-           f" <b>💽Dɪꜱᴋ :</b> <code>{psutil.disk_usage('/').percent}%</code>"
+    progress += f"<b>Cᴘᴜ :</b> <code>{psutil.cpu_percent()}%</code>" \
+           f" <b>Rᴀᴍ :</b> <code>{psutil.virtual_memory().percent}%</code>" \
+           f" <b>Dɪꜱᴋ :</b> <code>{psutil.disk_usage('/').percent}%</code>"
     with download_dict_lock:
         dlspeed_bytes = 0
         uldl_bytes = 0
