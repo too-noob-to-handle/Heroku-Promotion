@@ -122,28 +122,28 @@ def get_readable_message():
                 msg += f"<b>╭─📂 </b> <code>{download.name()}</code>"
                 msg += f"\n<b>├─ Sᴛᴀᴛᴜꜱ :</b> <i>{download.status()}</i>"
                 if download.status() not in (MirrorStatus.STATUS_ARCHIVING, MirrorStatus.STATUS_EXTRACTING):
-                    msg += f"\n<b>├─</b><code>{get_progress_bar_string(download)} {download.progress()}</code>"
+                    msg += f"\n<b>├─</b>{get_progress_bar_string(download)} {download.progress()}"
                     if download.status() == MirrorStatus.STATUS_CLONING:
-                        msg += f"\n<b>├─ Cʟᴏɴᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                        msg += f"\n<b>├─ Cʟᴏɴᴇᴅ :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                     elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                        msg += f"\n<b>├─ Uᴘʟᴏᴀᴅᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                        msg += f"\n<b>├─ Uᴘʟᴏᴀᴅᴇᴅ :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                     else:
-                        msg += f"\n<b>├─ Dᴏᴡɴʟᴏᴀᴅᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
-                    msg += f"\n<b>├─ Sᴘᴇᴇᴅ :</b> <code>{download.speed()}</code>" \
-                            f", <b> Eᴛᴀ :</b> <code>{download.eta()}</code> "
+                        msg += f"\n<b>├─ Dᴏᴡɴʟᴏᴀᴅᴇᴅ :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>├─ Sᴘᴇᴇᴅ :</b> {download.speed()}" \
+                            f", <b> Eᴛᴀ :</b> {download.eta()} "
                     # if hasattr(download, 'is_torrent'):
                     try:
-                        msg += f"\n<b>├─ Sᴇᴇᴅᴇʀꜱ :</b> <code>{download.aria_download().num_seeders}</code>" \
-                            f" | <b> Pᴇᴇʀꜱ :</b> <code>{download.aria_download().connections}</code>"
+                        msg += f"\n<b>├─ Sᴇᴇᴅᴇʀꜱ : </b>{download.aria_download().num_seeders}" \
+                            f" | <b> Pᴇᴇʀꜱ :</b> {download.aria_download().connections}"
                     except:
                         pass
                     try:
-                        msg += f"\n<b>├─ Sᴇᴇᴅᴇʀꜱ :</b> <code>{download.torrent_info().num_seeds}</code>" \
-                            f" | <b> Lᴇᴇᴄʜᴇʀꜱ :</b> <code>{download.torrent_info().num_leechs}</code>"
+                        msg += f"\n<b>├─ Sᴇᴇᴅᴇʀꜱ :</b> {download.torrent_info().num_seeds}" \
+                            f" | <b> Lᴇᴇᴄʜᴇʀꜱ :</b> {download.torrent_info().num_leechs}"
                     except:
                         pass
-                    msg += f"\n<b>╰─⛔ Tᴏ Sᴛᴏᴘ :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += "\n\n"
+                    msg += f"\n<b>╰─ Tᴏ Sᴛᴏᴘ :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += "\n╠▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬╣"
                 if STATUS_LIMIT is not None:
                     if INDEX >= COUNT + STATUS_LIMIT:
                         break
