@@ -170,7 +170,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': "💮 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐁𝐲 𝐒𝐩𝐚𝐫𝐤𝐱𝐂𝐥𝐨𝐮𝐝-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐁𝐨𝐭",
+            'description': "💮 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐁𝐲 BDH",
             'mimeType': mime_type,
         }
         try:
@@ -376,10 +376,10 @@ class GoogleDriveHelper:
                     msg = self.deletefile(durl)
                     LOGGER.info(f"{msg}")
                     return "your clone has been stopped and cloned data has been deleted!", "cancelled"
-                msg += f'<b>╭─🗂️ Fɪʟᴇɴᴀᴍᴇ : </b><code>{meta.get("name")}</code>\n<b>Size: </b><code>{get_readable_file_size(self.transferred_size)}</code>'
-                msg += f'\n<b>├─⚙️ Tʏᴘᴇ : </b><code>Folder</code>'
-                msg += f'\n<b>├─📚 Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
-                msg += f'\n<b>╰─📁 Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                msg += f'<b>╭─🗂️ </b><code>{meta.get("name")}</code>\n<b>Size: </b><code>{get_readable_file_size(self.transferred_size)}</code>'
+                msg += f'\n<b>├─ Tʏᴘᴇ : </b><code>Folder</code>'
+                msg += f'\n<b>├─ Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
+                msg += f'\n<b>╰─ Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
                     surl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={durl}&format=text').text
@@ -402,7 +402,7 @@ class GoogleDriveHelper:
                     buttons.buildbutton(f"{BUTTON_SIX_NAME}", f"{BUTTON_SIX_URL}")
             else:
                 file = self.copyFile(meta.get('id'), parent_id)
-                msg += f'<b>╭─🗂️ Fɪʟᴇɴᴀᴍᴇ : </b><code>{file.get("name")}</code>'
+                msg += f'<b>╭─🗂️ </b><code>{file.get("name")}</code>'
                 durl = self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
@@ -415,8 +415,8 @@ class GoogleDriveHelper:
                 except:
                     typeee = 'File' 
                 try:
-                    msg += f'\n<b>├─📦 Sɪᴢᴇ : </b><code>{get_readable_file_size(int(meta.get("size")))}</code>'
-                    msg += f'\n<b>╰─⚙️ Tʏᴘᴇ : </b><code>{typeee}</code>'
+                    msg += f'\n<b>├─ Sɪᴢᴇ : </b><code>{get_readable_file_size(int(meta.get("size")))}</code>'
+                    msg += f'\n<b>╰─ Tʏᴘᴇ : </b><code>{typeee}</code>'
                 except TypeError:
                     pass
                 if INDEX_URL is not None:
@@ -555,9 +555,9 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                 title = '💞 𝐒𝐩𝐚𝐫𝐤𝐱𝐂𝐥𝐨𝐮𝐝-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐛𝐨𝐭 𝐒𝐞𝐚𝐫𝐜𝐡',
-                                 author_name='💓 𝐒𝐩𝐚𝐫𝐤𝐱𝐂𝐥𝐨𝐮𝐝-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐛𝐨𝐭',
-                                 author_url='https://github.com/Spark-X-Cloud/SparkXcloud-Gdrive-MirrorBot',
+                                 title = '💞 𝐒𝐞𝐚𝐫𝐜𝐡',
+                                 author_name='💓',
+                                 author_url='https://github.com/',
                                  html_content=content)
         return
 
@@ -641,9 +641,9 @@ class GoogleDriveHelper:
 
             for content in self.telegraph_content :
                 self.path.append(Telegraph(access_token=telegraph_token).create_page(
-                                                        title = '💞 𝐒𝐩𝐚𝐫𝐤𝐱𝐂𝐥𝐨𝐮𝐝-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐛𝐨𝐭 𝐒𝐞𝐚𝐫𝐜𝐡',
-                                                        author_name='💓 𝐒𝐩𝐚𝐫𝐤𝐱𝐂𝐥𝐨𝐮𝐝-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐛𝐨𝐭',
-                                                        author_url='https://github.com/Spark-X-Cloud/SparkXcloud-Gdrive-MirrorBot',
+                                                        title = '💞 𝐒𝐞𝐚𝐫𝐜𝐡',
+                                                        author_name='💓',
+                                                        author_url='https://github.com/',
                                                         html_content=content
                                                         )['path'])
 
@@ -675,13 +675,13 @@ class GoogleDriveHelper:
             LOGGER.info(f"Counting: {name}")
             if drive_file['mimeType'] == self.__G_DRIVE_DIR_MIME_TYPE:
                 self.gDrive_directory(**drive_file)
-                msg += f'<b>╭─🗂️ Fɪʟᴇɴᴀᴍᴇ : </b><code>{name}</code>'
-                msg += f'\n<b>├─📦 Sɪᴢᴇ : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
-                msg += f'\n<b>├─⚙️ Tʏᴘᴇ : </b><code>Folder</code>'
-                msg += f'\n<b>├─📚 Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
-                msg += f'\n<b>╰─📁 Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                msg += f'<b>╭─🗂️ </b><code>{name}</code>'
+                msg += f'\n<b>├─ Sɪᴢᴇ : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
+                msg += f'\n<b>├─ Tʏᴘᴇ : </b><code>Folder</code>'
+                msg += f'\n<b>├─ Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
+                msg += f'\n<b>╰─ Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
             else:
-                msg += f'<b>╭─🗂️ Fɪʟᴇɴᴀᴍᴇ : </b><code>{name}</code>'
+                msg += f'<b>╭─ Fɪʟᴇɴᴀᴍᴇ : </b><code>{name}</code>'
                 try:
                     typee = drive_file['mimeType']
                 except:
@@ -689,9 +689,9 @@ class GoogleDriveHelper:
                 try:
                     self.total_files += 1
                     self.gDrive_file(**drive_file)
-                    msg += f'\n<b>├─📦 Sɪᴢᴇ : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
-                    msg += f'\n<b>├─⚙️ Tʏᴘᴇ : </b><code>{typee}</code>'
-                    msg += f'\n<b>╰─📁 Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                    msg += f'\n<b>├─ Sɪᴢᴇ : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
+                    msg += f'\n<b>├─ Tʏᴘᴇ : </b><code>{typee}</code>'
+                    msg += f'\n<b>╰─ Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
                 except TypeError:
                     pass
         except Exception as err:
