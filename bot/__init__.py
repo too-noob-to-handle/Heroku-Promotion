@@ -273,9 +273,9 @@ except KeyError:
 try:
     IMAGE_URL = getConfig('IMAGE_URL')
     if len(IMAGE_URL) == 0:
-        IMAGE_URL = 'https://telegra.ph/file/7ac7fa23a5c3d2bbba654.jpg'
+        IMAGE_URL = 'https://i.imgur.com/XEsgeiJ.jpg'
 except KeyError:
-    IMAGE_URL = 'https://telegra.ph/file/7ac7fa23a5c3d2bbba654.jpg'    
+    IMAGE_URL = 'https://i.imgur.com/XEsgeiJ.jpg'    
 try:
     STOP_DUPLICATE = getConfig('STOP_DUPLICATE')
     STOP_DUPLICATE = STOP_DUPLICATE.lower() == 'true'
