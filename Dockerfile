@@ -1,4 +1,4 @@
-FROM harshhaareddy/mega-sdk-python:latest
+FROM alexstuart1/bangladeshhoarding:new
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
