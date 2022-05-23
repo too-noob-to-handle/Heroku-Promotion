@@ -151,7 +151,7 @@ def get_readable_message():
             if INDEX > COUNT + STATUS_LIMIT:
                 return None, None
             if dick_no > STATUS_LIMIT:
-                msg += f"<b> Pᴀɢᴇ :</b> <code>{PAGE_NO}/{pages}</code> | <b> Tᴀꜱᴋꜱ :</b> <code>{dick_no}</code>\n"
+                msg += f"<b> Pᴀɢᴇ :</b> {PAGE_NO}/{pages} | <b> Tᴀꜱᴋꜱ :</b> {dick_no}\n"
                 buttons = button_build.ButtonMaker()
                 buttons.sbutton("⬅️", "pre")
                 buttons.sbutton("➡️", "nex")
