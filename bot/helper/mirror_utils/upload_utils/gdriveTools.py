@@ -377,9 +377,9 @@ class GoogleDriveHelper:
                     LOGGER.info(f"{msg}")
                     return "your clone has been stopped and cloned data has been deleted!", "cancelled"
                 msg += f'<b>╭─🗂️ </b><code>{meta.get("name")}</code>\n<b>Size: </b><code>{get_readable_file_size(self.transferred_size)}</code>'
-                msg += f'\n<b>├─ Tʏᴘᴇ : </b><code>Folder</code>'
-                msg += f'\n<b>├─ Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
-                msg += f'\n<b>╰─ Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                msg += f'\n<b>├─ Tʏᴘᴇ : </b>Folder'
+                msg += f'\n<b>├─ Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b>{self.total_folders}'
+                msg += f'\n<b>╰─ Fɪʟᴇꜱ : </b>{self.total_files}'
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
                     surl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={durl}&format=text').text
@@ -415,8 +415,8 @@ class GoogleDriveHelper:
                 except:
                     typeee = 'File' 
                 try:
-                    msg += f'\n<b>├─ Sɪᴢᴇ : </b><code>{get_readable_file_size(int(meta.get("size")))}</code>'
-                    msg += f'\n<b>╰─ Tʏᴘᴇ : </b><code>{typeee}</code>'
+                    msg += f'\n<b>├─ Sɪᴢᴇ : </b>{get_readable_file_size(int(meta.get("size")))}'
+                    msg += f'\n<b>╰─ Tʏᴘᴇ : </b>{typeee}'
                 except TypeError:
                     pass
                 if INDEX_URL is not None:
@@ -555,7 +555,7 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                 title = '💞 𝐒𝐞𝐚𝐫𝐜𝐡',
+                                 title = '💞 BDH 𝐒𝐞𝐚𝐫𝐜𝐡',
                                  author_name='💓',
                                  author_url='https://github.com/',
                                  html_content=content)
@@ -606,7 +606,7 @@ class GoogleDriveHelper:
                     # Excluded index link as indexes cant download or open these shortcuts
                 else:
                     furl = f"https://drive.google.com/uc?id={file.get('id')}&export=download"
-                    msg += f"📄 <code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size')))})</code><br>"
+                    msg += f"<code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size')))})</code><br>"
                     if SHORTENER is not None and SHORTENER_API is not None:
                         sfurl = requests.get(f'https://{SHORTENER}/api?api={SHORTENER_API}&url={furl}&format=text').text
                         msg += f"<b><a href={sfurl}>☁️ Dʀɪᴠᴇ Lɪɴᴋ ☁️</a></b>"
@@ -676,10 +676,10 @@ class GoogleDriveHelper:
             if drive_file['mimeType'] == self.__G_DRIVE_DIR_MIME_TYPE:
                 self.gDrive_directory(**drive_file)
                 msg += f'<b>╭─🗂️ </b><code>{name}</code>'
-                msg += f'\n<b>├─ Sɪᴢᴇ : </b><code>{get_readable_file_size(self.total_bytes)}</code>'
-                msg += f'\n<b>├─ Tʏᴘᴇ : </b><code>Folder</code>'
-                msg += f'\n<b>├─ Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{self.total_folders}</code>'
-                msg += f'\n<b>╰─ Fɪʟᴇꜱ : </b><code>{self.total_files}</code>'
+                msg += f'\n<b>├─ Sɪᴢᴇ : </b>{get_readable_file_size(self.total_bytes)}'
+                msg += f'\n<b>├─ Tʏᴘᴇ : </b>Folder'
+                msg += f'\n<b>├─ Sᴜʙꜰᴏʟᴅᴇʀꜱ : </b>{self.total_folders}'
+                msg += f'\n<b>╰─ Fɪʟᴇꜱ : </b>{self.total_files}'
             else:
                 msg += f'<b>╭─ Fɪʟᴇɴᴀᴍᴇ : </b><code>{name}</code>'
                 try:
